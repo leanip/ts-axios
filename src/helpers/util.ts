@@ -1,4 +1,3 @@
-
 const toString = Object.prototype.toString
 
 export function isDate(val: any): val is Date {
