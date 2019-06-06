@@ -2,7 +2,21 @@ import { AxiosRequestConfig, AxiosPromise } from '../types'
 import dispatchRequest from './dispatchRequest'
 
 export default class Axios {
-  request(config: AxiosRequestConfig): AxiosPromise {
+  // request(config: AxiosRequestConfig): AxiosPromise {
+  //   return dispatchRequest(config)
+  // }
+
+  request(url: any, config?: any): AxiosPromise {
+    if (typeof url === 'string') {
+      if (!config) {
+        config = {}
+      }
+
+      config.url = url
+    } else {
+      config = url
+    }
+
     return dispatchRequest(config)
   }
 
@@ -27,7 +41,7 @@ export default class Axios {
   }
 
   put(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise {
-    return this._requestMethodWithData('pug', url, data, config)
+    return this._requestMethodWithData('put', url, data, config)
   }
 
   patch(url: string, data?: any, config?: AxiosRequestConfig): AxiosPromise {

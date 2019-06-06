@@ -1,6 +1,6 @@
 import { isDate, isObject } from './util'
 
-const encode = (val: string): string => {
+function encode (val: string): string {
   return encodeURIComponent(val)
     .replace(/%40/g, '@')
     .replace(/%3A/ig, ':')
